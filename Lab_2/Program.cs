@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 namespace ConsoleApp1
 {
@@ -36,7 +36,7 @@ namespace ConsoleApp1
                 }
             }
         }
-        static void MainCount(int N,int M,int[,] matrix)
+        static void MainCount(int N, int M, int[,] matrix)
         {
             (int[] ans1, int max, string index1) = CountBottom(N, M, matrix);
             (int[] ans2, int min, string index2) = CountTop(N, M, matrix);
@@ -47,13 +47,13 @@ namespace ConsoleApp1
             Console.WriteLine("\nPart of matrix above the diagonal:\n ");
             PrintODMatrix(ans2, (M * M - M) / 2 + M); Console.Write("\n\nmin: " + min + index2 + "\n");
         }
-        static int[,] CreateMatrix(int n,int m)
+        static int[,] CreateMatrix(int n, int m)
         {
             Random rnd = new Random();
-            int[,] res = new int[n,m];
+            int[,] res = new int[n, m];
             for (int i = 0; i < n; i++)
                 for (int j = 0; j < m; j++)
-                    res[i, j] = rnd.Next(0,100);
+                    res[i, j] = rnd.Next(0, 100);
             return res;
         }
         static int[,] CreateControlMatrix(int n, int m)
@@ -70,13 +70,13 @@ namespace ConsoleApp1
             }
             return res;
         }
-        static void PrintMatrix(int[,] matrix,int n, int m)
+        static void PrintMatrix(int[,] matrix, int n, int m)
         {
             for (int i = 0; i < n; i++)
             {
                 for (int j = 0; j < m; j++)
                 {
-                    Console.Write($"{matrix[i,j],3};");
+                    Console.Write($"{matrix[i, j],3};");
                 }
                 Console.WriteLine("\n");
             }
@@ -86,15 +86,15 @@ namespace ConsoleApp1
             for (int j = 0; j < m; j++)
                 Console.Write(matrix[j] + ", ");
         }
-        static (int[],int,string) CountBottom(int n, int m, int[,]matrix)
+        static (int[], int, string) CountBottom(int n, int m, int[,] matrix)
         {
-            string index = $"[{n-1},1]";
+            string index = $"[{n - 1},1]";
             int k = 0, t = 1, d = 1, max = matrix[n - 1, 1];
-            int[] res = new int[(n*n-n)/2];
+            int[] res = new int[(n * n - n) / 2];
             while (k < (n * n - n) / 2)
             {
                 int l = m - d - 1;
-                for(int i = t; i < m - d + 1; i++)
+                for (int i = t; i < m - d + 1; i++)
                 {
                     res[k] = matrix[n - d, i];
                     if (res[k] > max)
@@ -111,12 +111,12 @@ namespace ConsoleApp1
                     if (res[k] > max)
                     {
                         index = "";
-                        index += Convert.ToString($"[{i},{m-1}]");
+                        index += Convert.ToString($"[{i},{m - 1}]");
                         max = res[k];
                     }
                     k++;
                 }
-                for (int i = 2 * d; i < n - d ; i++) 
+                for (int i = 2 * d; i < n - d; i++)
                 {
                     res[k] = matrix[i, l];
                     if (res[k] > max)
@@ -125,16 +125,16 @@ namespace ConsoleApp1
                         index += Convert.ToString($"[{i},{l}]");
                         max = res[k];
                     }
-                    l =l-1;
+                    l = l - 1;
                     k++;
                 }
-                t += 2;d += 1;
+                t += 2; d += 1;
             }
             return (res, max, index);
         }
-        static (int[],int, string) CountTop(int n, int m, int[,] matrix)
+        static (int[], int, string) CountTop(int n, int m, int[,] matrix)
         {
-            string index = $"0,{m-1}";
+            string index = $"0,{m - 1}";
             int k = 0, t = 1, d = 1, min = matrix[m - 1, 0];
             int[] res = new int[(n * n - n) / 2 + n];
             while (k < (n * n - n) / 2 + n)
@@ -149,12 +149,12 @@ namespace ConsoleApp1
                         index += Convert.ToString($"[{i},{l}]");
                         min = res[k];
                     }
-                    k++;l--;
+                    k++; l--;
                 }
-                for (int i = n - t - 1; i >= d - 1; i--) 
+                for (int i = n - t - 1; i >= d - 1; i--)
                 {
                     res[k] = matrix[i, d - 1];
-                    if (res[k] < min) 
+                    if (res[k] < min)
                     {
                         index = "";
                         index += Convert.ToString($"[{i},{d - 1}]");
@@ -168,14 +168,14 @@ namespace ConsoleApp1
                     if (res[k] < min)
                     {
                         index = "";
-                        index += Convert.ToString($"[{d-1},{i}]");
+                        index += Convert.ToString($"[{d - 1},{i}]");
                         min = res[k];
                     }
                     k++;
                 }
                 t += 2; d += 1;
             }
-            return (res,min,index);
+            return (res, min, index);
         }
     }
 }
