@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "ol4fi46ssxc2DRDchG+Iw5x0eW4gNF3Uqd+oMl1V9Zgs36D/lz/UkbwjbUuq0W835w1I/dEkqEAslr5l/qzmUg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\eygeh\\Desktop\\workspace\\ADS\\Rep1\\Lab_3\\Lab_3_Proj\\Lab_03.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\eygeh\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.19\\microsoft.netcore.app.host.win-x64.3.1.19.nupkg.sha512"
+  ],
+  "logs": []
+}
